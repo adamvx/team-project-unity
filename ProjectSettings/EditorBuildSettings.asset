@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/UI.unity
+    guid: 5714a0538e598f64a88e7faa92c2652c
+  - enabled: 1
+    path: Assets/Scenes/VirtConference.unity
+    guid: 095f4756201f43d4a8199063a1612ed0
   m_configObjects: {}
