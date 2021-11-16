@@ -1,57 +1,40 @@
 using UnityEngine;
 using Draco;
-using WebSocketSharp;
 using System.Threading.Tasks;
 using System;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
-public class DracoParser : MonoBehaviour
+public class DracoParser : MonoBehaviour, ServerSocketHandler
 {
 
-  private WebSocket client = new WebSocket("ws://161.35.216.12:5677");
   private DracoMeshLoader draco = new DracoMeshLoader();
   private byte[] data = Array.Empty<byte>();
+  private bool isUpdate = false;
 
   void Start()
   {
 
-    client.OnOpen += (sender, e) =>
-    {
-      Debug.Log("Client has connected");
-    };
+    // StartCoroutine(Api.CreateRoom(room =>
+    // {
+    //   Debug.Log(room.id);
+    // }));
 
-    client.OnMessage += (sender, e) =>
-    {
-      if (!e.IsBinary)
-      {
-        Debug.Log("DATA IS NOT BINARY");
-        return;
-      }
-      data = e.RawData;
+    // new ServerSocket("38b6-74c9-dac4", this);
 
-    };
+  }
 
-
-    client.OnError += (sender, e) =>
-      {
-        Debug.Log("Client has error" + e.Message);
-      };
-
-    client.OnClose += (sender, e) =>
-    {
-      Debug.Log("Client has closed" + e.Reason);
-    };
-
-    client.Connect();
-
-
+  public void onData(byte[] data)
+  {
+    this.data = data;
+    isUpdate = true;
   }
 
   async void Update()
   {
-    if (data.Length != 0)
+    if (data.Length != 0 && isUpdate == true)
     {
+      isUpdate = false;
       await handleData(data);
     }
   }
@@ -81,5 +64,6 @@ public class DracoParser : MonoBehaviour
     }
 
   }
+
 
 }
