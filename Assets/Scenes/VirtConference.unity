@@ -268,7 +268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: mato
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1536,7 +1536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &422369336
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2789,7 +2789,7 @@ GameObject:
   - component: {fileID: 1531103402}
   - component: {fileID: 1531103401}
   m_Layer: 0
-  m_Name: nameplace
+  m_Name: names
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2809,6 +2809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameValue: test
   textElement: {fileID: 498263614}
+  UIName: {fileID: 6115898}
 --- !u!4 &1531103402
 Transform:
   m_ObjectHideFlags: 0

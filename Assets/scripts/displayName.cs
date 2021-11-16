@@ -7,7 +7,7 @@ public class displayName : MonoBehaviour
 {
      public string nameValue;
     public TextMeshPro textElement;
-    
+    public TextMeshProUGUI UIName;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +19,6 @@ public class displayName : MonoBehaviour
     {
         nameValue = storeName.theName;
         textElement.text = nameValue;
+        UIName.text = nameValue;
     }
 }
