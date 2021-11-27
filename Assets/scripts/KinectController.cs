@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Microsoft.Azure.Kinect.Sensor;
 using System.Threading.Tasks;
-using System.IO;
-using System.Text;
 using System;
-using WebSocketSharp;
-using Draco;
 
 public class KinectController : MonoBehaviour
 {
@@ -128,6 +122,14 @@ public class KinectController : MonoBehaviour
 
   void OnDestroy()
   {
-    kinect.StopCameras();
+    try
+    {
+      kinect.StopCameras();
+    }
+    catch (Exception e)
+    {
+
+    }
+
   }
 }

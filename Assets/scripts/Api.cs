@@ -7,7 +7,9 @@ public class Api : MonoBehaviour
   private static readonly string HTTP = "http://";
   private static readonly string WS = "ws://";
   private static readonly string BASE_URL = "161.35.216.12:5677/";
-  public IEnumerator CreateAndJoinRoom()
+
+
+  public IEnumerator CreateAndJoinRoomImpl()
   {
     string uri = HTTP + BASE_URL + "create";
 
@@ -22,6 +24,11 @@ public class Api : MonoBehaviour
 
     var room = JsonUtility.FromJson<Room>(uwr.downloadHandler.text);
     JoinRoom(room.id);
+  }
+
+  public void CreateAndJoinRoom()
+  {
+    CreateAndJoinRoomImpl();
   }
 
   public void JoinRoom(string code)
