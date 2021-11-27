@@ -20,7 +20,7 @@ public class displayName : MonoBehaviour
     void Update()
     {
         nameValue = storeName.theName;
-        linkValue = storeName.theLink;
+        linkValue = Api.FinalLink;
         textElement.text = nameValue;
         UIName.text = nameValue;
         UILink.text = linkValue;

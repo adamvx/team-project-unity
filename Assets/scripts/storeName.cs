@@ -23,13 +23,12 @@ public class storeName : MonoBehaviour
     public void readStringNameInput(string s)
     {
         theName = s;
-        Debug.Log(theName);
 
     }
-    public void readStringLinkInput(string s)
+    public void readStringLinkInput(string link)
     {
-
-        theLink = s;
+        theLink = link;
 
     }
+
 }
