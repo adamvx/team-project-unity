@@ -24,10 +24,7 @@ public class KinectController : MonoBehaviour
       InitMesh();
       KinectLoop();
     }
-    catch (Exception e)
-    {
-
-    }
+    catch (Exception) { }
 
   }
 
@@ -126,10 +123,7 @@ public class KinectController : MonoBehaviour
     {
       kinect.StopCameras();
     }
-    catch (Exception e)
-    {
-
-    }
+    catch (Exception) { }
 
   }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -243,11 +243,11 @@ RectTransform:
   m_Father: {fileID: 422369336}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -790, y: 233}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -0.5, y: 456.51}
+  m_SizeDelta: {x: 0.5, y: 456.51}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &6115898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,7 +739,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &80819574
 GameObject:
@@ -1719,7 +1719,7 @@ GameObject:
   - component: {fileID: 498263615}
   - component: {fileID: 498263614}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1772,8 +1772,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2100,11 +2100,11 @@ RectTransform:
   m_Father: {fileID: 422369336}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500.839, y: 350.253}
-  m_SizeDelta: {x: 778.322, y: 93.494}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 93.494}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &971445762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2216,7 +2216,7 @@ GameObject:
   - component: {fileID: 1061726618}
   - component: {fileID: 1061726622}
   m_Layer: 0
-  m_Name: Demo
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2425,7 +2425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2200aea17f63540b12ce7f49567cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausemenuUI: {fileID: 422369335}
+  panel: {fileID: 422369335}
 --- !u!1 &1151657822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,7 +2935,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1634155984
 GameObject:

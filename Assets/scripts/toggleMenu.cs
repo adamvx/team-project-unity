@@ -1,23 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class toggleMenu : MonoBehaviour
+public class ToggleMenu : MonoBehaviour
 {
-    public GameObject pausemenuUI;
 
-    void Update()
+  public GameObject panel;
+  void Start()
+  {
+    panel.SetActive(false);
+  }
+  void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.Tab))
     {
-
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            pausemenuUI.SetActive(true);
-        }
-
-        else if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            pausemenuUI.SetActive(false);
-        }
+      panel.SetActive(true);
     }
+
+    else if (Input.GetKeyUp(KeyCode.Tab))
+    {
+      panel.SetActive(false);
+    }
+  }
 }
