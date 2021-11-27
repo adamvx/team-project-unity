@@ -8,17 +8,15 @@ public interface ServerSocketHandler
 
 public class ServerSocket
 {
-  private static readonly string BASE_URL = "ws://161.35.216.12:5677/";
-
   private WebSocket client;
-  public ServerSocket(string roomId, ServerSocketHandler handler)
+  public ServerSocket(string url, ServerSocketHandler handler)
   {
 
-    this.client = new WebSocket(BASE_URL + roomId);
+    this.client = new WebSocket(url);
 
     client.OnOpen += (sender, e) =>
     {
-      Debug.Log("Client has connected to room id: " + roomId);
+      Debug.Log("Client has connected to room");
     };
 
     client.OnMessage += (sender, e) =>

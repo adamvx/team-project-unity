@@ -5,24 +5,12 @@ using System;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
-public class DracoParser : MonoBehaviour, ServerSocketHandler
+public class Player : MonoBehaviour
 {
 
   private DracoMeshLoader draco = new DracoMeshLoader();
   private byte[] data = Array.Empty<byte>();
   private bool isUpdate = false;
-
-  void Start()
-  {
-
-    // StartCoroutine(Api.CreateRoom(room =>
-    // {
-    //   Debug.Log(room.id);
-    // }));
-
-    // new ServerSocket("38b6-74c9-dac4", this);
-
-  }
 
   public void onData(byte[] data)
   {

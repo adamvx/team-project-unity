@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.Networking;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ServerSocketHandler
 {
   private static readonly string HTTP = "http://";
   private static readonly string WS = "ws://";
   private static readonly string BASE_URL = "161.35.216.12:5677/";
+
+  private ServerSocket socket;
 
   public void QuitGame()
   {
@@ -31,6 +33,19 @@ public class GameManager : MonoBehaviour
       return;
     }
     LoadScene(1);
+  }
+
+  public void StartDataStream()
+  {
+    if (Storage.link.Length > 0)
+    {
+      socket = new ServerSocket(Storage.link, this);
+    }
+  }
+
+  public void onData(byte[] data)
+  {
+    //TODO: treba po prijati dat treba data preposlat na usera do jeho skriotu a tam ich namapovat na mesh
   }
 
   public void LoadScene(int level)
@@ -64,5 +79,4 @@ public class GameManager : MonoBehaviour
     Storage.link = WS + BASE_URL + room.id;
     LoadScene(1);
   }
-
 }
