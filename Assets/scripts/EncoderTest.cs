@@ -23,8 +23,8 @@ public class EncoderTest : MonoBehaviour
             GetComponent<MeshFilter>().mesh = mesh;
         }
 
-        // var result = Draco.Encoder.DracoEncoder.EncodeMesh(gameObject.GetComponent<MeshFilter>().mesh);
-        // Debug.Log(result[0].data);
+        var result = Draco.Encoder.DracoEncoder.EncodeMesh(gameObject.GetComponent<MeshFilter>().mesh);
+        Debug.Log(result[0].data);
     }
 
 }
