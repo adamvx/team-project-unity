@@ -42,4 +42,9 @@ public class ServerSocket
 
     client.Connect();
   }
+
+    public void Send(byte[] data)
+    {
+        client.Send(data);
+    }
 }
