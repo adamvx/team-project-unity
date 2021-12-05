@@ -42,36 +42,43 @@ public class GameManager : MonoBehaviour, ServerSocketHandler
         if (Storage.link.Length > 0)
         {
             socket = new ServerSocket(Storage.link, this);
-            //StartSending();
+            SendDataTask().Start();
         }
     }
 
-    public void StartSending()
+    public async Task SendDataTask()
     {
-        Task.Run(async() => {
-            var x = 0;
-            while (true)
+        uint x = 0;
+        while (true)
+        {
+            var fullPath = Path.Combine(Application.streamingAssetsPath, "file" + x + ".drc");
+            var data = File.ReadAllBytes(fullPath);
+            socket.Send(data);
+            if (x >= 120)
             {
-                var fullPath = Path.Combine(Application.streamingAssetsPath, "file" + x + ".drc");
-                var data = File.ReadAllBytes(fullPath);
-                socket.Send(data);
-                if (x >= 120)
-                {
-                    x = 0;
-                }
-                await Task.Delay(33);
+                x = 0;
             }
-        });
+            else
+            {
+                x++;
+            }
+            await Task.Delay(33);
+        }
     }
 
     public void onData(byte[] data)
     {
+        Debug.Log("Data has been recieved");
         //TODO: treba po prijati dat treba data preposlat na usera do jeho skriotu a tam ich namapovat na mesh
     }
 
     public void LoadScene(int level)
     {
         SceneManager.LoadScene(level);
+        if (level == 1)
+        {
+            StartDataStream();
+        }
     }
 
     public void SetUserName(string s)
