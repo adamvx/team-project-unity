@@ -2,8 +2,9 @@ using UnityEngine;
 using Microsoft.Azure.Kinect.Sensor;
 using System.Threading.Tasks;
 using System;
+using System.IO;
 
-public class KinectController : MonoBehaviour
+public class KinectController2 : MonoBehaviour
 {
   Device kinect;
   int depthWidth;
@@ -93,11 +94,11 @@ public class KinectController : MonoBehaviour
       {
         //Getting color information
         Image colorImage = transformation.ColorImageToDepthCamera(capture);
-        BGRA[] colorPixels = colorImage.GetPixels<BGRA>().ToArray();
+        BGRA[] colorArray = colorImage.GetPixels<BGRA>().ToArray();
 
         //Getting vertices of point cloud
         Image depthImage = transformation.DepthImageToPointCloud(capture.Depth);
-        Short3[] depthPixels = depthImage.GetPixels<Short3>().ToArray();
+        Short3[] PointCloud = depthImage.GetPixels<Short3>().ToArray();
 
         int triangleIndex = 0;
         int pointIndex = 0;
@@ -108,22 +109,22 @@ public class KinectController : MonoBehaviour
                     for (int x = 0; x < depthWidth; x++)
                     {
 
-                        vertices[pointIndex].x = PointCloud[pointIndex].X * 0.001f;
-                        vertices[pointIndex].y = -PointCloud[pointIndex].Y * 0.001f;
-                        vertices[pointIndex].z = PointCloud[pointIndex].Z * 0.001f;
+                        vertices[pointIndex].x = PointCloud[pointIndex].X * 0.01f;
+                        vertices[pointIndex].y = -PointCloud[pointIndex].Y * 0.01f;
+                        vertices[pointIndex].z = PointCloud[pointIndex].Z * 0.01f;
 
                         colors[pointIndex].a = 255;
                         colors[pointIndex].b = colorArray[pointIndex].B;
                         colors[pointIndex].g = colorArray[pointIndex].G;
                         colors[pointIndex].r = colorArray[pointIndex].R;
 
-                        // if (PointCloud[pointIndex].Z > rangeOfVisibility || PointCloud[pointIndex].Z == 0){
-                        //     vertices[pointIndex].x = 0;
-                        //     vertices[pointIndex].y = 0;
-                        //     vertices[pointIndex].z = 0;
-                        //     colors[pointIndex].a = 0;
-                        //     continue;
-                        // }
+                        /*if (PointCloud[pointIndex].Z > rangeOfVisibility || PointCloud[pointIndex].Z == 0){
+                            vertices[pointIndex].x = 0;
+                            vertices[pointIndex].y = 0;
+                            vertices[pointIndex].z = 0;
+                            colors[pointIndex].a = 0;
+                            continue;
+                        }*/
 
                         if (x != (depthWidth - 1) && y != (depthHeight - 1))
                         {
@@ -174,8 +175,16 @@ public class KinectController : MonoBehaviour
                 mesh.triangles = indeces;
                 mesh.RecalculateBounds();
 
+                var result = Draco.Encoder.DracoEncoder.EncodeMesh(mesh);
+                Debug.Log(result);
 
-      }
+                var writePath = Path.Combine(Application.streamingAssetsPath, "res.drc.bytes");
+                for (var submesh = 0; submesh < result.Length; submesh++)
+                {
+                    File.WriteAllBytes(writePath, result[submesh].data.ToArray());
+                    result[submesh].Dispose();
+                }
+            }
     }
   }
 
